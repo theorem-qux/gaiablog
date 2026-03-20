@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記事編集 - 数と日々の記録</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="admin-style.css">
+  <style>
+    .edit-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .edit-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .edit-no {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--admin-text-muted);
+      background: var(--admin-bg-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 3px;
+      padding: 0.25rem 0.6rem;
+      white-space: nowrap;
+    }
+    .edit-article-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--admin-text);
+      flex: 1;
+    }
+    .edit-field-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--admin-text-muted);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .edit-title-input {
+      width: 100%;
+      background: var(--admin-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      color: var(--admin-text);
+      padding: 0.55rem 0.75rem;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      outline: none;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .edit-title-input:focus {
+      border-color: var(--admin-accent);
+    }
+    .edit-body-textarea {
+      width: 100%;
+      min-height: 380px;
+      background: var(--admin-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      color: var(--admin-text);
+      padding: 1rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      line-height: 1.85;
+      resize: vertical;
+      outline: none;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .edit-body-textarea:focus {
+      border-color: var(--admin-accent);
+    }
+    .edit-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn-save {
+      background: var(--admin-accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.6rem 1.5rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-save:hover {
+      background: var(--admin-accent-hover);
+    }
+    .btn-back {
+      background: transparent;
+      color: var(--admin-text-muted);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      padding: 0.6rem 1.25rem;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-back:hover {
+      border-color: var(--admin-accent);
+      color: var(--admin-text);
+    }
+    .save-error {
+      display: none;
+      background: rgba(231, 76, 60, 0.1);
+      border: 1px solid rgba(231, 76, 60, 0.35);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .save-error.visible {
+      display: block;
+    }
+    .save-error-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #e74c3c;
+      margin-bottom: 0.75rem;
+    }
+    .btn-return {
+      background: transparent;
+      color: var(--admin-text-muted);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      padding: 0.5rem 1.1rem;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-return:hover {
+      border-color: var(--admin-text-muted);
+      color: var(--admin-text);
+    }
+    /* No.499 コメントアウトエリア */
+    .secret-block-wrap {
+      display: none;
+      margin-top: 2.5rem;
+      border: 1px dashed #4a3070;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .secret-block-label {
+      background: #1a0a2e;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7a5aac;
+      font-weight: 700;
+    }
+    .secret-block-body {
+      background: #13101e;
+      padding: 2rem;
+      color: #c8b8e8;
+      line-height: 2;
+      font-size: 0.92rem;
+    }
+    .secret-block-body p {
+      margin-bottom: 1.1em;
+    }
+    .secret-answer-form {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .secret-answer-form input[type="text"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.55rem 0.75rem;
+      background: #1c1020;
+      border: 1px solid #4a3070;
+      border-radius: 4px;
+      color: #dde1ec;
+      font-size: 0.9rem;
+      font-family: var(--mono);
+      outline: none;
+    }
+    .secret-answer-form input[type="text"]:focus {
+      border-color: #7a5aac;
+    }
+    .secret-answer-form button {
+      padding: 0.55rem 1.2rem;
+      background: #4a3070;
+      color: #e8d8ff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background 0.2s;
+    }
+    .secret-answer-form button:hover {
+      background: #5a3a88;
+    }
+    .secret-error {
+      color: #e74c3c;
+      font-size: 0.85rem;
+      display: none;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      .edit-wrap { padding: 1rem; }
+      .edit-meta { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body id="edit-page">
+
+<header id="admin-header">
+  <div class="admin-logo">ADMIN <span>/ 数と日々の記録</span></div>
+  <nav class="admin-nav">
+    <a href="index.html">記事一覧</a>
+    <a id="logout-btn" class="logout-link">ログアウト</a>
+  </nav>
+</header>
+
+<div class="edit-wrap">
+  <div class="admin-page-title" style="margin-bottom:1.5rem;">記事編集</div>
+
+  <div class="edit-meta">
+    <span class="edit-no" id="edit-no-label">No. —</span>
+    <span class="edit-article-title" id="edit-title-display"></span>
+  </div>
+
+  <div class="edit-field-label">タイトル</div>
+  <input type="text" class="edit-title-input" id="title-input" autocomplete="off" spellcheck="false">
+
+  <div class="edit-field-label">本文</div>
+  <textarea class="edit-body-textarea" id="body-textarea" spellcheck="false"></textarea>
+
+  <div class="edit-actions">
+    <button class="btn-save" id="btn-save">保存</button>
+    <a href="index.html" class="btn-back">キャンセル</a>
+  </div>
+
+  <div class="save-error" id="save-error">
+    <div class="save-error-title">保存に失敗しました</div>
+    <button class="btn-return" id="btn-return">コンテンツ一覧に戻る</button>
+  </div>
+
+
+  <!-- No.499 専用コメントアウトエリア -->
+  <div class="secret-block-wrap" id="secret-block-wrap">
+    <div class="secret-block-label"><!-- 非公開セクション / No.499 only --></div>
+    <div class="secret-block-body">
+      <p>この記事を見つけてくださってありがとうございます。</p>
+      <p>尾須浦先生、言ってましたよね。次の完全数まで続けたいって。だから僕が続きを書いておきました。先生が目標にしていた496。その次の素数が、ここです。ブログの番号を素数で振って、完全数を記念にする。本当に先生らしい。</p>
+      <p>さて、あなたには僕のことを知ってほしいです。ここまで辿り着いたあなたのために、最後のメッセージを用意しました。</p>
+      <p>呪いの数式…いや、「呪いの数字」はある一つの数式が元になっています。あなたはもう、その数式がどんなものか、分かっているはずです。</p>
+      <p>その数式を入力してください。</p>
+      <div class="secret-answer-form">
+        <input type="text" id="formulaInput" placeholder="数式を入力してください" />
+        <button onclick="checkFormula()">回答する</button>
+      </div>
+      <p class="secret-error" id="formulaError">違います。</p>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script src="article-data.js"></script>
+<script>
+  (function() {
+    var params = new URLSearchParams(location.search);
+    var no = params.get('no') || '—';
+    var title = params.get('title') || '';
+
+    document.getElementById('edit-no-label').textContent = 'No. ' + no;
+    document.getElementById('edit-title-display').textContent = title;
+    document.getElementById('title-input').value = title;
+
+    // 記事本文を ARTICLE_BODIES から取得
+    var bodyText = (typeof ARTICLE_BODIES !== 'undefined' && ARTICLE_BODIES[no]) || '';
+    // 書き換え前の記事を ARTICLE_ORIGINALS から取得してコメントとして埋め込む
+    var origContent = (typeof ARTICLE_ORIGINALS !== 'undefined' && ARTICLE_ORIGINALS[no]) || '';
+    // No.037 専用メモコメント
+    var sakauchiMemo = no === '037' ? '\n\n<!--\nSAKAUCHI_MEMO_START\n尾須浦先生の口調を再現するプロンプト：\n・一人称は「僕」。丁寧体（です・ます）だが、途中でくだけた地の文が混ざることがある。\n・長い文と短い文を意図的に交互に使う。短い文で感情や結論を置く。\n・「〜気がする」「〜かもしれない」「〜と思っている」など断定を避ける語尾を多用する。\n・数学的な内容を説明するとき、まず日常的な言い回しから入り、徐々に専門的な言葉に移行する。\n・（笑）や…を使う。感情を直接書かず、行動や情景で間接的に示す。\n・読者に話しかける口調（「〜でしょう？」「〜ですよね」「気づいた方はいるでしょうか」）を挟む。\n・自己ツッコミや自己訂正が入る（「いや、正確には〜」「というより、〜の方が近い」）。\n・授業や生徒の話を挟むことで、数学の話に人間的な文脈を持たせる。\nSAKAUCHI_MEMO_END\n-->' : '';
+    var origComment = origContent ? '\n\n<!-- ORIGINAL ARTICLE\n' + origContent + '\n-->' : '';
+    var fullBody = bodyText
+      + sakauchiMemo
+      + origComment
+      + (bodyText || origContent ? '\n\n' : '')
+      + '<!-- ここに非公開内容を入力 -->';
+    document.getElementById('body-textarea').value = fullBody;
+
+    var originalTitle = title;
+    var originalBody = fullBody;
+
+    document.getElementById('btn-save').addEventListener('click', function() {
+      // 元の状態に戻す
+      document.getElementById('title-input').value = originalTitle;
+      document.getElementById('body-textarea').value = originalBody;
+      // エラーを表示
+      document.getElementById('save-error').classList.add('visible');
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+
+    document.getElementById('btn-return').addEventListener('click', function() {
+      location.href = 'index.html';
+    });
+
+    // No.499 のみコメントアウトエリアを表示
+    if (no === '499') {
+      var secretWrap = document.getElementById('secret-block-wrap');
+      secretWrap.style.display = 'block';
+      // ARTICLE_ADMIN_BLOCKS から内容を取得して挿入
+      var adminBlock = (typeof ARTICLE_ADMIN_BLOCKS !== 'undefined' && ARTICLE_ADMIN_BLOCKS[no]) || '';
+      if (adminBlock) {
+        var secretBody = secretWrap.querySelector('.secret-block-body');
+        if (secretBody) secretBody.innerHTML = adminBlock;
+      }
+    }
+  })();
+
+  function checkFormula() {
+    var input = document.getElementById('formulaInput').value.trim();
+    var correct = ['sine', 'sin(e)', 'Sin(e)'];
+    if (correct.indexOf(input) !== -1) {
+      location.href = 'final.html';
+    } else {
+      document.getElementById('formulaError').style.display = 'block';
+    }
+  }
+</script>
+</body>
+</html>

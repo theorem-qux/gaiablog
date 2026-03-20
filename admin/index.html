@@ -1,0 +1,943 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理者ページ - 数と日々の記録</title>
+  <meta name="description" content="管理者ページ">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="admin-style.css">
+  <style>
+    .article-table tbody tr { cursor: pointer; }
+    .badge-rewritten { background: #7a5aac; color: #fff; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 3px; letter-spacing: 0.04em; margin-left: 0.35rem; font-weight: 700; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<header id="admin-header">
+  <div class="admin-logo">ADMIN <span>/ 数と日々の記録</span></div>
+  <nav class="admin-nav">
+    <a href="#article-list">記事一覧</a>
+    <a id="logout-btn" class="logout-link">ログアウト</a>
+  </nav>
+</header>
+
+<main class="admin-main" id="admin-page">
+  <h2 class="admin-page-title">ダッシュボード</h2>
+
+  <div class="admin-stats">
+    <div class="stat-card">
+      <div class="stat-value">109</div>
+      <div class="stat-label">総記事数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">109</div>
+      <div class="stat-label">公開</div>
+    </div>
+  </div>
+
+  <h2 class="admin-page-title" id="article-list" style="margin-top:2rem;">全記事一覧</h2>
+  <div class="article-table-wrap">
+    <table class="article-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>タイトル</th>
+          <th>作成日</th>
+          <th>最終更新</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+                                                                  <tbody>
+
+        <tr data-no="002" data-title="ブログ始めてみました">
+          <td class="mono-text">002</td>
+          <td>ブログ始めてみました</td>
+          <td>2022-04-15</td>
+          <td>2022-04-15</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="003" data-title="新学期の授業…生徒の様子は？">
+          <td class="mono-text">003</td>
+          <td>新学期の授業…生徒の様子は？</td>
+          <td>2022-04-18</td>
+          <td>2022-04-18</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="005" data-title="先日もらった数式">
+          <td class="mono-text">005</td>
+          <td>先日もらった数式</td>
+          <td>2022-04-25</td>
+          <td>2022-04-25</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="007" data-title="第7回！（素数で数えたときに）">
+          <td class="mono-text">007</td>
+          <td>第7回！（素数で数えたときに）</td>
+          <td>2022-05-02</td>
+          <td>2022-05-02</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="011" data-title="生徒からの素朴な質問">
+          <td class="mono-text">011</td>
+          <td>生徒からの素朴な質問</td>
+          <td>2022-05-10</td>
+          <td>2022-05-10</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="013" data-title="急遽、担任を持つことになった">
+          <td class="mono-text">013</td>
+          <td>急遽、担任を持つことになった</td>
+          <td>2022-05-20</td>
+          <td>2022-05-20</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="017" data-title="体育祭が終わった">
+          <td class="mono-text">017</td>
+          <td>体育祭が終わった</td>
+          <td>2022-06-01</td>
+          <td>2022-06-01</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="019" data-title="好きな定理の話">
+          <td class="mono-text">019</td>
+          <td>好きな定理の話</td>
+          <td>2022-06-08</td>
+          <td>2022-06-08</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="023" data-title="もうすぐ記念回">
+          <td class="mono-text">023</td>
+          <td>もうすぐ記念回</td>
+          <td>2022-06-20</td>
+          <td>2022-06-20</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="029" data-title="第29回！また突破できて嬉しいです">
+          <td class="mono-text">029</td>
+          <td>第29回！また突破できて嬉しいです</td>
+          <td>2022-07-05</td>
+          <td>2022-07-05</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="031" data-title="夏前の授業まとめ">
+          <td class="mono-text">031</td>
+          <td>夏前の授業まとめ</td>
+          <td>2022-07-15</td>
+          <td>2022-07-15</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="037" data-title="数学界の有名な数について">
+          <td class="mono-text">037</td>
+          <td>数学界の有名な数について</td>
+          <td>2022-07-28</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="041" data-title="また問題を持ってきてくれた">
+          <td class="mono-text">041</td>
+          <td>また問題を持ってきてくれた</td>
+          <td>2022-08-10</td>
+          <td>2022-08-10</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="043" data-title="夏休み中の補講">
+          <td class="mono-text">043</td>
+          <td>夏休み中の補講</td>
+          <td>2022-08-20</td>
+          <td>2022-08-20</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="047" data-title="新学期の準備">
+          <td class="mono-text">047</td>
+          <td>新学期の準備</td>
+          <td>2022-09-01</td>
+          <td>2022-09-01</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="053" data-title="三角関数の基本">
+          <td class="mono-text">053</td>
+          <td>三角関数の基本</td>
+          <td>2022-09-15</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="059" data-title="読書の秋、数学書の秋">
+          <td class="mono-text">059</td>
+          <td>読書の秋、数学書の秋</td>
+          <td>2022-09-25</td>
+          <td>2022-09-25</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="061" data-title="中間テストが近い">
+          <td class="mono-text">061</td>
+          <td>中間テストが近い</td>
+          <td>2022-10-03</td>
+          <td>2022-10-03</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="067" data-title="中間テストが終わった">
+          <td class="mono-text">067</td>
+          <td>中間テストが終わった</td>
+          <td>2022-10-15</td>
+          <td>2022-10-15</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="071" data-title="頭から離れない">
+          <td class="mono-text">071</td>
+          <td>頭から離れない</td>
+          <td>2022-10-22</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="073" data-title="数列の読み方">
+          <td class="mono-text">073</td>
+          <td>数列の読み方</td>
+          <td>2022-10-28</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="079" data-title="マクローリン展開について">
+          <td class="mono-text">079</td>
+          <td>マクローリン展開について</td>
+          <td>2022-11-05</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="083" data-title="ガウス記号（床関数）について">
+          <td class="mono-text">083</td>
+          <td>ガウス記号（床関数）について</td>
+          <td>2022-11-12</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="089" data-title="N進数の考え方">
+          <td class="mono-text">089</td>
+          <td>N進数の考え方</td>
+          <td>2022-11-20</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="097" data-title="9進数の各桁を取り出す">
+          <td class="mono-text">097</td>
+          <td>9進数の各桁を取り出す</td>
+          <td>2022-11-28</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="101" data-title="小数の9進数表示について">
+          <td class="mono-text">101</td>
+          <td>小数の9進数表示について</td>
+          <td>2022-12-01</td>
+          <td>2022-12-01</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="103" data-title="0.362412015384720…">
+          <td class="mono-text">103</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-02</td>
+          <td>2022-12-02</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="107" data-title="0.362412015384720…">
+          <td class="mono-text">107</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-03</td>
+          <td>2022-12-03</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="109" data-title="0.362412015384720…">
+          <td class="mono-text">109</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-04</td>
+          <td>2022-12-04</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="113" data-title="0.362412015384720…">
+          <td class="mono-text">113</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-05</td>
+          <td>2022-12-05</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="127" data-title="0.362412015384720…">
+          <td class="mono-text">127</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-06</td>
+          <td>2022-12-06</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="131" data-title="0.362412015384720…">
+          <td class="mono-text">131</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-07</td>
+          <td>2022-12-07</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="137" data-title="0.362412015384720…">
+          <td class="mono-text">137</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-08</td>
+          <td>2022-12-08</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="139" data-title="0.362412015384720…">
+          <td class="mono-text">139</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-09</td>
+          <td>2022-12-09</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="149" data-title="0.362412015384720…">
+          <td class="mono-text">149</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-10</td>
+          <td>2022-12-10</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="151" data-title="0.362412015384720…">
+          <td class="mono-text">151</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-11</td>
+          <td>2022-12-11</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="157" data-title="0.362412015384720…">
+          <td class="mono-text">157</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-12</td>
+          <td>2022-12-12</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="163" data-title="0.362412015384720…">
+          <td class="mono-text">163</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-13</td>
+          <td>2022-12-13</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="167" data-title="0.362412015384720…">
+          <td class="mono-text">167</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-14</td>
+          <td>2022-12-14</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="173" data-title="0.362412015384720…">
+          <td class="mono-text">173</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-15</td>
+          <td>2022-12-15</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="179" data-title="0.362412015384720…">
+          <td class="mono-text">179</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-16</td>
+          <td>2022-12-16</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="181" data-title="0.362412015384720…">
+          <td class="mono-text">181</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-17</td>
+          <td>2022-12-17</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="191" data-title="0.362412015384720…">
+          <td class="mono-text">191</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-18</td>
+          <td>2022-12-18</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="193" data-title="0.362412015384720…">
+          <td class="mono-text">193</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-19</td>
+          <td>2022-12-19</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="197" data-title="0.362412015384720…">
+          <td class="mono-text">197</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-20</td>
+          <td>2022-12-20</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="199" data-title="0.362412015384720…">
+          <td class="mono-text">199</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-21</td>
+          <td>2022-12-21</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="211" data-title="0.362412015384720…">
+          <td class="mono-text">211</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-22</td>
+          <td>2022-12-22</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="223" data-title="0.362412015384720…">
+          <td class="mono-text">223</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-23</td>
+          <td>2022-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="227" data-title="0.362412015384720…">
+          <td class="mono-text">227</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-24</td>
+          <td>2022-12-24</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="229" data-title="0.362412015384720…">
+          <td class="mono-text">229</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-25</td>
+          <td>2022-12-25</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="233" data-title="0.362412015384720…">
+          <td class="mono-text">233</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-26</td>
+          <td>2022-12-26</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="239" data-title="0.362412015384720…">
+          <td class="mono-text">239</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-27</td>
+          <td>2022-12-27</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="241" data-title="0.362412015384720…">
+          <td class="mono-text">241</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-28</td>
+          <td>2022-12-28</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="251" data-title="0.362412015384720…">
+          <td class="mono-text">251</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-29</td>
+          <td>2022-12-29</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="257" data-title="0.362412015384720…">
+          <td class="mono-text">257</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-30</td>
+          <td>2022-12-30</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="263" data-title="0.362412015384720…">
+          <td class="mono-text">263</td>
+          <td>0.362412015384720…</td>
+          <td>2022-12-31</td>
+          <td>2022-12-31</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="269" data-title="0.362412015384720…">
+          <td class="mono-text">269</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-01</td>
+          <td>2023-01-01</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="271" data-title="0.362412015384720…">
+          <td class="mono-text">271</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-02</td>
+          <td>2023-01-02</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="277" data-title="0.362412015384720…">
+          <td class="mono-text">277</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-03</td>
+          <td>2023-01-03</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="281" data-title="0.362412015384720…">
+          <td class="mono-text">281</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-04</td>
+          <td>2023-01-04</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="283" data-title="0.362412015384720…">
+          <td class="mono-text">283</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-05</td>
+          <td>2023-01-05</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="293" data-title="0.362412015384720…">
+          <td class="mono-text">293</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-06</td>
+          <td>2023-01-06</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="307" data-title="0.362412015384720…">
+          <td class="mono-text">307</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-07</td>
+          <td>2023-01-07</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="311" data-title="0.362412015384720…">
+          <td class="mono-text">311</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-08</td>
+          <td>2023-01-08</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="313" data-title="0.362412015384720…">
+          <td class="mono-text">313</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-09</td>
+          <td>2023-01-09</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="317" data-title="0.362412015384720…">
+          <td class="mono-text">317</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-10</td>
+          <td>2023-01-10</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="331" data-title="0.362412015384720…">
+          <td class="mono-text">331</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-11</td>
+          <td>2023-01-11</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="337" data-title="0.362412015384720…">
+          <td class="mono-text">337</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-12</td>
+          <td>2023-01-12</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="347" data-title="0.362412015384720…">
+          <td class="mono-text">347</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-13</td>
+          <td>2023-01-13</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="349" data-title="0.362412015384720…">
+          <td class="mono-text">349</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-14</td>
+          <td>2023-01-14</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="353" data-title="0.362412015384720…">
+          <td class="mono-text">353</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-15</td>
+          <td>2023-01-15</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="359" data-title="0.362412015384720…">
+          <td class="mono-text">359</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-16</td>
+          <td>2023-01-16</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="367" data-title="0.362412015384720…">
+          <td class="mono-text">367</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-17</td>
+          <td>2023-01-17</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="373" data-title="0.362412015384720…">
+          <td class="mono-text">373</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-18</td>
+          <td>2023-01-18</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="379" data-title="0.362412015384720…">
+          <td class="mono-text">379</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-19</td>
+          <td>2023-01-19</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="383" data-title="0.362412015384720…">
+          <td class="mono-text">383</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-20</td>
+          <td>2023-01-20</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="389" data-title="0.362412015384720…">
+          <td class="mono-text">389</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-21</td>
+          <td>2023-01-21</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="397" data-title="0.362412015384720…">
+          <td class="mono-text">397</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-22</td>
+          <td>2023-01-22</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="401" data-title="0.362412015384720…">
+          <td class="mono-text">401</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-23</td>
+          <td>2023-01-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="409" data-title="0.362412015384720…">
+          <td class="mono-text">409</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-24</td>
+          <td>2023-01-24</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="419" data-title="0.362412015384720…">
+          <td class="mono-text">419</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-25</td>
+          <td>2023-01-25</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="421" data-title="0.362412015384720…">
+          <td class="mono-text">421</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-26</td>
+          <td>2023-01-26</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="431" data-title="0.362412015384720…">
+          <td class="mono-text">431</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-27</td>
+          <td>2023-01-27</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="433" data-title="0.362412015384720…">
+          <td class="mono-text">433</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-28</td>
+          <td>2023-01-28</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="439" data-title="0.362412015384720…">
+          <td class="mono-text">439</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-29</td>
+          <td>2023-01-29</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="443" data-title="0.362412015384720…">
+          <td class="mono-text">443</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-30</td>
+          <td>2023-01-30</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="449" data-title="0.362412015384720…">
+          <td class="mono-text">449</td>
+          <td>0.362412015384720…</td>
+          <td>2023-01-31</td>
+          <td>2023-01-31</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="457" data-title="0.362412015384720…">
+          <td class="mono-text">457</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-01</td>
+          <td>2023-02-01</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="461" data-title="0.362412015384720…">
+          <td class="mono-text">461</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-02</td>
+          <td>2023-02-02</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="463" data-title="0.362412015384720…">
+          <td class="mono-text">463</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-03</td>
+          <td>2023-02-03</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="467" data-title="0.362412015384720…">
+          <td class="mono-text">467</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-04</td>
+          <td>2023-02-04</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="479" data-title="0.362412015384720…">
+          <td class="mono-text">479</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-05</td>
+          <td>2023-02-05</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="487" data-title="0.362412015384720…">
+          <td class="mono-text">487</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-06</td>
+          <td>2023-02-06</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="491" data-title="0.362412015384720…">
+          <td class="mono-text">491</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-07</td>
+          <td>2023-02-07</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="499" data-title="0.362412015384720…">
+          <td class="mono-text">499</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-08</td>
+          <td>2025-12-23</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="503" data-title="0.362412015384720…">
+          <td class="mono-text">503</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-09</td>
+          <td>2023-02-09</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="509" data-title="0.362412015384720…">
+          <td class="mono-text">509</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-10</td>
+          <td>2023-02-10</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="521" data-title="0.362412015384720…">
+          <td class="mono-text">521</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-11</td>
+          <td>2023-02-11</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="523" data-title="0.362412015384720…">
+          <td class="mono-text">523</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-12</td>
+          <td>2023-02-12</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="541" data-title="0.362412015384720…">
+          <td class="mono-text">541</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-13</td>
+          <td>2023-02-13</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="547" data-title="0.362412015384720…">
+          <td class="mono-text">547</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-14</td>
+          <td>2023-02-14</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="557" data-title="0.362412015384720…">
+          <td class="mono-text">557</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-15</td>
+          <td>2023-02-15</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="563" data-title="0.362412015384720…">
+          <td class="mono-text">563</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-16</td>
+          <td>2023-02-16</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="569" data-title="0.362412015384720…">
+          <td class="mono-text">569</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-17</td>
+          <td>2023-02-17</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="571" data-title="0.362412015384720…">
+          <td class="mono-text">571</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-18</td>
+          <td>2023-02-18</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="577" data-title="0.362412015384720…">
+          <td class="mono-text">577</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-19</td>
+          <td>2023-02-19</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="587" data-title="0.362412015384720…">
+          <td class="mono-text">587</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-20</td>
+          <td>2023-02-20</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="593" data-title="0.362412015384720…">
+          <td class="mono-text">593</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-21</td>
+          <td>2023-02-21</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+        <tr data-no="599" data-title="0.362412015384720…">
+          <td class="mono-text">599</td>
+          <td>0.362412015384720…</td>
+          <td>2023-02-22</td>
+          <td>2023-02-22</td>
+          <td><span class="badge badge-public">公開</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script src="auth.js"></script>
+<script>
+  document.querySelectorAll('.article-table tbody tr').forEach(function(tr) {
+    tr.addEventListener('click', function() {
+      var no = tr.dataset.no;
+      var title = tr.dataset.title;
+      location.href = 'edit.html?no=' + encodeURIComponent(no) + '&title=' + encodeURIComponent(title);
+    });
+  });
+</script>
+</body>
+</html>

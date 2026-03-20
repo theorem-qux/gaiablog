@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9進数の各桁を取り出す - 数と日々の記録</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="single-column">
+
+<header id="site-header">
+  <div class="header-inner">
+    <div class="header-math-decoration">∑ ∫ π √ ∞ ∈ ∀ ∃ ≡ ≠ ∂ ∇</div>
+    <h1 id="site-title"><a href="../index.html">数と日々の記録</a></h1>
+    <p id="site-subtitle">尾須浦凱亜のブログ</p>
+  </div>
+</header>
+
+<nav id="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html">ホーム</a>
+    <a href="../index.html#about">このブログについて</a>
+  </div>
+</nav>
+
+<div id="main-wrapper">
+  <main id="main-content">
+    <a href="../index.html" class="back-link">← 記事一覧</a>
+    <article class="article-page">
+      <div class="article-header">
+        <div class="article-no-badge">No.97</div>
+        <h1 class="article-title">9進数の各桁を取り出す</h1>
+        <div class="article-date-info">2022年11月28日</div>
+      </div>
+      <div class="article-body">
+        <p>以前、ガウス記号を紹介しました。実はあれを使うと、実数の9進数展開の各桁を取り出せます。</p>
+        <p>なんでもいいので、ある実数を \(S\)（\(0 \leq S < 1\)）としましょうか。\(S\) の9進数展開の小数点以下第 \(n\) 桁 \(a_n\) は</p>
+        <p>\[
+a_n = \lfloor 9^n S \rfloor - 9 \lfloor 9^{n-1} S \rfloor
+\]</p>
+        <p>で求まります。</p>
+        <p>…は？</p>
+        <p>うむ。皆さんの声が聞こえてくるようです。</p>
+        <p>試しに \(S = 0.56789\) で計算してみます。</p>
+        <p>・0.56789の小数点以下第1位を取り出す
+\[
+\lfloor 9 \times 0.56789 \rfloor - 9 \times \lfloor 0.56789 \rfloor = \lfloor 5.111\ldots \rfloor - 0 = 5
+\]</p>
+        <p>・0.56789の小数点以下第2位を取り出す
+\[
+\lfloor 81 \times 0.56789 \rfloor - 9 \times 5 = \lfloor 45.999\ldots \rfloor - 45 = 0
+\]</p>
+        <p>・0.56789の小数点以下第3位を取り出す
+\[
+\lfloor 729 \times 0.56789 \rfloor - 9 \times 45 = \lfloor 414.092\ldots \rfloor - 405 = 9
+\]</p>
+        <p>小数第1位は5、小数第2位は0、小数第3位は9ということになりそうです！
+あ、でも9進数に「9」は使えないんでしたね。繰り上がりが発生するので、実際の計算では注意が必要です。</p>
+        <p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+        <p>■ 繰り上がりが起きるとき</p>
+        <p>\(S = 0.56789\) の3桁目で「9」が出てしまいました。
+これは実は「前の桁が本来1つ大きかった」ことを意味します。\(n=2\) の計算を振り返ると、\(\lfloor 45.999\ldots \rfloor = 45\) としましたが、45.999…は限りなく46に近い値です。計算の精度が十分であれば \(\lfloor 45.999\ldots \rfloor = 46\) となり、\(n=2\) の桁は \(46 - 45 = 1\)、\(n=3\) の桁は \(\lfloor 414.092\ldots \rfloor - 9 \times 46 = 414 - 414 = 0\) と正しく収まります。</p>
+        <p>より正確には、9進数の「9」という桁は存在しないので、もし \(a_n = 9\) になった場合は</p>
+        <p>\[
+a_n = 9 \Rightarrow a_n = 0 \text{ として前の桁 } a_{n-1} \text{ に1を加える}
+\]</p>
+        <p>という繰り上がり処理が必要です。</p>
+        <p>ただし、\(S\) が本当に「きれいな」9進小数展開を持つ値であれば、各桁は必ず0〜8に収まります。繰り上がりが起きるのは、計算の精度不足か、そもそも \(S\) の選び方が9進数と相性の悪い値だったかのどちらかです。</p>
+        <p>これを無限に続けて足し合わせると</p>
+        <p>\[
+S = \sum_{n=1}^{\infty} \frac{a_n}{9^n}
+\]</p>
+        <p>という形で、任意の小数を9進数として再構成できます。</p>
+        <p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+        <p>ちなみに、この操作で取り出した各桁 \(a_n\) を使って、こんな式を考えてみましょう。</p>
+        <p>\[
+\sum_{n=1}^{\infty} \frac{a_n}{10^n}
+\]</p>
+        <p>この無限和の最初の項は \(a_1\) を10で割った値、第2項は \(a_2\) を100で割った値、第3項は \(a_3\) を1000で割った値…。つまりこの式は \(0.a_1 a_2 a_3\ldots\) という小数を表しています。</p>
+        <p>実数Sの9進数展開の各桁をそのまま小数として横に並べた値、とも言えます。</p>
+        <p>さて、9進数展開の各桁 \(a_n\) は必ず0〜8の整数です。9という数字は絶対に現れません。ということは、\(0.a_1 a_2 a_3\ldots\) という小数の各桁も、すべて0〜8に収まります。</p>
+        <p>もし指が8本しかない人がいたとしても、この小数の各桁なら全部数えられます。</p>
+      <!-- ORIGINAL ARTICLE
+生徒が、授業中、指で数を延々と数えていたのを見たことがある。指が、8本しかない生徒だった。9進数なら、8本の指で数えられる。
+      -->
+      </div>
+      <nav class="article-nav">
+        <a href="no-089.html">← No.89</a>
+        <a href="no-101.html">No.101 →</a>
+      </nav>
+    </article>
+  </main>
+</div>
+
+<footer id="site-footer">
+  <p>© 2022 尾須浦凱亜 / 数と日々の記録</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Claude Code設定
+.claude/
+
+# 下書き・ネタバレ資料
+【過去】下書き/
+
+# アーカイブ
+【過去】_archive/
+【過去】build_output.py
+
+# 開発メモ
+CLAUDE.md

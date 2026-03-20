@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小数の9進数表示について - 数と日々の記録</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="single-column">
+
+<header id="site-header">
+  <div class="header-inner">
+    <div class="header-math-decoration">∑ ∫ π √ ∞ ∈ ∀ ∃ ≡ ≠ ∂ ∇</div>
+    <h1 id="site-title"><a href="../index.html">数と日々の記録</a></h1>
+    <p id="site-subtitle">尾須浦凱亜のブログ</p>
+  </div>
+</header>
+
+<nav id="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html">ホーム</a>
+    <a href="../index.html#about">このブログについて</a>
+  </div>
+</nav>
+
+<div id="main-wrapper">
+  <main id="main-content">
+    <a href="../index.html" class="back-link">← 記事一覧</a>
+    <article class="article-page">
+      <div class="article-header">
+        <div class="article-no-badge">No.101</div>
+        <h1 class="article-title">小数の9進数表示について</h1>
+        <div class="article-date-info">2022年12月1日</div>
+      </div>
+      <div class="article-body">
+        <p>\[
+\sum_{k=0}^{\infty} \frac{1}{k!} = 1 + 1 + \frac{1}{2!} + \frac{1}{3!} + \cdots = e
+\]</p>
+        <p>より</p>
+        <p>\[
+\sin(e) = \sum_{m=0}^{\infty} \frac{(-1)^m}{(2m+1)!} \left( \sum_{k=0}^{\infty} \frac{1}{k!} \right)^{2m+1}
+\]</p>
+        <p>の値が分かる。</p>
+        <p>各桁 \(a_n\) は</p>
+        <p>\[
+a_n = \lfloor 9^n \sin(e) \rfloor - 9\lfloor 9^{n-1} \sin(e) \rfloor
+\]</p>
+        <p>で求まり、順に計算すると \(a_1=3, a_2=6, a_3=2, a_4=4, \ldots\) となる。</p>
+        <p>この各桁を</p>
+        <p>\[
+\sum_{n=1}^{\infty} \frac{a_n}{9^n}
+\]</p>
+        <p>で足し合わせれば元に戻る。9進数展開の定義そのものだから当然だ。</p>
+        <p>だがここで改めて、彼が渡してきた式を見る。</p>
+        <p>\[
+\sum_{n=1}^{\infty} \frac{a_n}{10^n}
+\]</p>
+        <p>分母が9ではなく10になっている。数学的な再構成として自然なのは分母 \(9^n\) のはずで、\(10^n\) にする理由が最初は分からなかった。</p>
+        <p>\(\sum \frac{a_n}{10^n}\) が何を表すか考える。第1項は</p>
+        <p>\[
+\frac{a_1}{10} = \frac{3}{10} = 0.3
+\]</p>
+        <p>第2項は</p>
+        <p>\[
+\frac{a_2}{100} = \frac{6}{100} = 0.06
+\]</p>
+        <p>第3項は</p>
+        <p>\[
+\frac{a_3}{1000} = \frac{2}{1000} = 0.002
+\]</p>
+        <p>であり、これを足し合わせると</p>
+        <p>\[
+0.3 + 0.06 + 0.002 + 0.0004 + \cdots = 0.3624\ldots
+\]</p>
+        <p>となる。つまり \(\sum \frac{a_n}{10^n}\) は、9進数展開の各桁をそのまま10進数の小数として横に並べた数字列</p>
+        <p>\[
+0.3624120153\ldots
+\]</p>
+        <p>を表している。</p>
+        <p>ではなぜ分母を10にしたのか。</p>
+        <p>9進数展開の各桁は定義上 \(\{0,1,\ldots,8\}\) に属するから、この数字列には9が一切現れない。現れるはずがない。</p>
+        <p>0から8まで。9は使わない。</p>
+        <p>指が8本しかない人間が、その8本の指で、この数字列の桁を一つずつ数えていくことができる。</p>
+        <p>\[
+\sum_{n=1}^{\infty} \frac{a_n}{10^n}
+\]</p>
+        <p>は「8本の指で数えられる数字列」を作る式だ。</p>
+        <p>数学的な整合性のためではなく、指で数えるために、分母は10でなければならなかった。</p>
+      </div>
+      <nav class="article-nav">
+        <a href="no-097.html">← No.97</a>
+        <a href="no-103.html">No.103 →</a>
+      </nav>
+    </article>
+  </main>
+</div>
+
+<footer id="site-footer">
+  <p>© 2022 尾須浦凱亜 / 数と日々の記録</p>
+</footer>
+
+</body>
+</html>
