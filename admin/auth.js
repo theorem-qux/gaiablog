@@ -5,9 +5,6 @@ const HASH_PW = '6d6d906c653ea716bc4f15d81f6ca707b082d3a72834c35ad97e76ac3ef9a59
 
 const SESSION_KEY = 'admin_auth_ok';
 
-/**
- * 文字列をSHA-256でハッシュ化（HEX文字列で返す）
- */
 async function sha256(str) {
   const encoder = new TextEncoder();
   const data = encoder.encode(str);
