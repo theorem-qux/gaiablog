@@ -147,7 +147,6 @@
       border-color: var(--admin-text-muted);
       color: var(--admin-text);
     }
-    /* No.499 コメントアウトエリア */
     .secret-block-wrap {
       display: none;
       margin-top: 2.5rem;
@@ -258,9 +257,8 @@
   </div>
 
 
-  <!-- No.499 専用コメントアウトエリア -->
   <div class="secret-block-wrap" id="secret-block-wrap">
-    <div class="secret-block-label"><!-- 非公開セクション / No.499 only --></div>
+    <div class="secret-block-label"></div>
     <div class="secret-block-body">
       <p>この記事を見つけてくださってありがとうございます。</p>
       <p>尾須浦先生、言ってましたよね。次の完全数まで続けたいって。だから僕が続きを書いておきました。先生が目標にしていた496。その次の素数が、ここです。ブログの番号を素数で振って、完全数を記念にする。本当に先生らしい。</p>
@@ -318,7 +316,6 @@
       location.href = 'index.html';
     });
 
-    // No.499 のみコメントアウトエリアを表示
     if (no === '499') {
       var secretWrap = document.getElementById('secret-block-wrap');
       secretWrap.style.display = 'block';
@@ -331,10 +328,19 @@
     }
   })();
 
-  function checkFormula() {
+  async function checkFormula() {
     var input = document.getElementById('formulaInput').value.trim();
-    var correct = ['sine', 'sin(e)', 'Sin(e)'];
-    if (correct.indexOf(input) !== -1) {
+    var encoder = new TextEncoder();
+    var data = encoder.encode(input);
+    var hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    var hashArray = Array.from(new Uint8Array(hashBuffer));
+    var hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    var correct = [
+      'ef7c967436632d3042bdfbdb366f33b500a67223015a36eefd2924a90805a3e4',
+      '918c5721c1189c08b3bbde068d3cec123579413647f21320fcf6f65420c9d485',
+      '8e82e52ee5bea881bbcdabd64b5f808a78997b403db42a2f84cfcbd3ffbf4811'
+    ];
+    if (correct.indexOf(hash) !== -1) {
       location.href = 'final.html';
     } else {
       document.getElementById('formulaError').style.display = 'block';

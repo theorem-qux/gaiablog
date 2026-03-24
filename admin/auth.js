@@ -1,9 +1,6 @@
 // auth.js - 管理者認証処理
 
-// 事前計算済みSHA-256ハッシュ値
-// ID: "gausseuler"（小文字統一）のSHA-256
 const HASH_ID = '819e13cbc006bd179dc20c7c3d11d2b07075a07ed8f4ddd1172bb7840f46e9c7';
-// PW: "0410781" のSHA-256
 const HASH_PW = '6d6d906c653ea716bc4f15d81f6ca707b082d3a72834c35ad97e76ac3ef9a593';
 
 const SESSION_KEY = 'admin_auth_ok';
